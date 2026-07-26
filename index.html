@@ -789,59 +789,7 @@
         }
 
     </style> </head>
-    /* --- ESTILOS DE DISPONIBILIDAD DE PROPIEDADES --- */
-.tarjeta-propiedad {
-  background: #1e1e1e;
-  border-radius: 8px;
-  overflow: hidden;
-  width: 280px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-  position: relative;
-}
-
-.tarjeta-img-contenedor {
-  position: relative;
-  width: 100%;
-  height: 140px;
-}
-
-.tarjeta-img-contenedor img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: all 0.3s ease;
-}
-
-/* Capa transparente con el aviso */
-.overlay-no-disponible {
-  display: none; /* Oculto por defecto cuando está disponible */
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.75); /* Oscurece la imagen */
-  color: #ff3333; /* Texto rojo */
-  font-weight: 800;
-  font-size: 1.1rem;
-  letter-spacing: 1px;
-  align-items: center;
-  justify-content: center;
-  text-transform: uppercase;
-  z-index: 2;
-  pointer-events: none;
-}
-
-/* CUANDO data-instockes "false" */
-.tarjeta-propiedad[data-instock="false"] .overlay-no-disponible {
-  display: flex; /* Muestra el aviso */
-}
-
-.tarjeta-propiedad[data-instock="false"] .tarjeta-img-contenedor img {
-  opacity: 0.35; /* Imagen con tono opaco / oscuro */
-  filter: grayscale(80%); /* Efecto desaturado */
-}
+    
     </style>
 </head>
 <div id="tvModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); z-index: 2000; justify-content: center; align-items: center; padding: 20px;">
@@ -1415,7 +1363,7 @@ document.getElementById('tvModal').addEventListener('click', function(event) {
     <div class="tarjeta-propiedad" data-instock="true">
     <div class="tarjeta-img-contenedor">
         <a href="https://wa.me/56921631905?text=Hola,%20me%20interesa%20la%20Casa%20Cod:%20CAS-02" target="_blank">
-            <img src="assets/IMG-20260725-WA0016.jpg" alt="Casa Amplia">
+            <img src="assets/IMG-20260725-WA0016.JPG" alt="Casa Amplia">
         </a>
         <div class="overlay-no-disponible">NO DISPONIBLE</div>
     </div>
