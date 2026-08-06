@@ -1455,15 +1455,22 @@ document.getElementById('tvModal').addEventListener('click', function(event) {
     <!-- Tarjeta de Propiedad 1 -->
 
      <div class="tarjeta-propiedad" data-instock="false">
-    <div class="tarjeta-img-contenedor">
-        <a href="https://wa.me/56921631905?text=Hola,%20me%20interesa%20la%20Casa%20Cod:%20CAS-02" target="_blank">
-            <img src="assets/LaFlorida1.jpg" alt="Casa Amplia">
-        </a>
-        <div class="overlay-no-disponible">NO DISPONIBLE</div>
+    
+    <div class="tarjeta-img-contenedor tarjeta-img-click" onclick="abrirGaleria(['assets/img/LaFlorida1_1.jpg', 'assets/img/LaFlorida1_2.jpg', 'assets/img/LaFlorida1_3.jpg', 'assets/img/LaFlorida1_4.jpg', 'assets/img/LaFlorida1_5.jpg', 'assets/img/LaFlorida1_6.jpg', 'assets/img/LaFlorida1_7.jpg', 'assets/img/LaFlorida1_8.jpg', 'assets/img/LaFlorida1_9.jpg', 'assets/img/LaFlorida1_10.jpg', 'assets/img/LaFlorida1_11.jpg', 'assets/img/LaFlorida1_12.jpg'])">
+        <img src="assets/img/LaFlorida1.jpg" alt="Casa Residencial Faldeos de Florida">
+        <div class="overlay-no-disponible">No Disponible</div>
     </div>
-    <div style="padding: 15px; color: white;">
-        <h4 style="margin: 0 0 10px 0;">Casa Residencial 3D/2B Faldeos de Florida</h4>
-        <p style="color: #ff3333; font-weight: bold; margin: 0;"></p>
+
+    <div style="padding: 15px;">
+        <h4 style="color: #fff; font-size: 1rem; margin-bottom: 8px;">Casa Residencial 3D/2B Faldeos de Florida, La Serena</h4>
+        <p style="color: var(--color-amarillo); font-weight: 700; font-size: 0.95rem; margin-bottom: 12px;">Consultar Precio</p>
+        
+        <a href="https://wa.me/56921631905?text=Hola,%20estoy%20interesado(a)%20en%20consultar%20sobre%20la%20propiedad:%20Casa%20Residencial%203D/2B%20Faldeos%20de%20Florida,%20La%20Serena.%20¿Me%20pueden%20dar%20más%20detalles?" 
+           target="_blank" 
+           class="btn-solido" 
+           style="padding: 10px 15px; font-size: 0.85rem;">
+            <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
+        </a>
     </div>
 </div>
 
