@@ -591,15 +591,54 @@
             font-weight: 700;
             color: var(--color-amarillo);
         }
-        /* Estilo específico para que los cuadros o imágenes de arte se muestren completos sin recortarse */
-#contenedorFotosModal img {
-    width: 450px !important;       /* Forzamos un ancho grande de 1200px para que se vea gigantesca */
-    max-width: none !important;
+        /* --- ESTILO PARA LA GALERÍA MÚLTIPLE (Cuadrícula de fotos adicionales de casas/departamentos) --- */
+.modal-galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    max-height: 65vh;
+    overflow-y: auto;
+    padding: 10px;
+    justify-items: center;
+}
+
+.modal-galeria-grid img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid var(--borde);
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.modal-galeria-grid img:hover {
+    transform: scale(1.03);
+}
+
+/* --- ESTILO UNIFICADO PARA VER CUALQUIER IMAGEN EN GRANDE (Cuadros, Casas, Departamentos y Detalles) --- */
+.modal-cuadro-detalle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 80vh;
+    width: 100%;
+    overflow: auto;
+    padding: 10px;
+}
+
+.modal-cuadro-detalle img {
+    max-width: 100% !important;
+    width: auto !important;
+    max-height: 75vh !important;
     height: auto !important;
     object-fit: contain !important;
     border-radius: 8px;
-    box-shadow: 0 5px 25px rgba(0,0,0,0.7);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
+    display: block;
+    margin: 0 auto;
 }
+
         /* --- MENÚ DESPLEGABLE --- */
         .dropdown-container {
             position: relative;
@@ -1762,6 +1801,7 @@ document.getElementById('tvModal').addEventListener('click', function(event) {
 </div>
 
 <script>
+    
     // Función para abrir la galería con un arreglo de rutas de imágenes
     function abrirGaleria(listaDeImgenes) {
         const modal = document.getElementById('galeriaModal');
@@ -1797,6 +1837,59 @@ document.getElementById('tvModal').addEventListener('click', function(event) {
         }
     }
 </script>
+<script>
+    // Función para abrir cuadros de arte o cualquier imagen individual en grande
+        function abrirCuadroDetalle(rutaImagen) {
+            const modal = document.getElementById('galeriaModal');
+            const contenedor = document.getElementById('contenedorFotosModal');
+            contenedor.className = "modal-cuadro-detalle";
+            contenedor.innerHTML = '';
+            
+            const img = document.createElement('img');
+            img.src = rutaImagen;
+            img.alt = 'Detalle de la Imagen';
+            contenedor.appendChild(img);
+            
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Función para abrir la galería de múltiples fotos (casas / departamentos)
+        function abrirGaleriaPropiedad(listaDeImgenes) {
+            const modal = document.getElementById('galeriaModal');
+            const contenedor = document.getElementById('contenedorFotosModal');
+            contenedor.className = "modal-galeria-grid";
+            contenedor.innerHTML = '';
+            
+            listaDeImgenes.forEach(ruta => {
+                const img = document.createElement('img');
+                img.src = ruta;
+                img.alt = 'Foto adicional de la propiedad';
+                // Si hacen clic en una foto de la grilla de la casa, también se puede ver en grande con la función de detalle:
+                img.onclick = () => abrirCuadroDetalle(ruta);
+                contenedor.appendChild(img);
+            });
+            
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function cerrarGaleria() {
+            const modal = document.getElementById('galeriaModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function cerrarGaleriaFuera(event) {
+            const modal = document.getElementById('galeriaModal');
+            if (event.target === modal) {
+                cerrarGaleria();
+            }
+        }
+    </script>
+    
+</body>
+</html>
 
 
 </body>
