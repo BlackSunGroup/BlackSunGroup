@@ -638,6 +638,18 @@
     display: block;
     margin: 0 auto;
 }
+/* --- 2. ESTILO EXCLUSIVO PARA CUADROS DE ARTE (Zoom controlado) --- */
+/* Si usas un contenedor o clase independiente para los cuadros, por ejemplo .modal-cuadros-grid img */
+.modal-cuadros-grid img {
+    max-width: 450px !important;
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+    border-radius: 8px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.7);
+    margin: 0 auto;
+    display: block;
+}
 
         /* --- MENÚ DESPLEGABLE --- */
         .dropdown-container {
@@ -896,6 +908,7 @@
     font-size: 1.8rem;
     cursor: pointer;
 }
+
 
 /* Cursor interactivo en la imagen principal para indicar que se puede abrir */
 .tarjeta-img-click {
@@ -1189,7 +1202,7 @@ document.getElementById('tvModal').addEventListener('click', function(event) {
                 <!-- Cuadro 1 -->
                 <div class="tarjeta-propiedad" data-instock="true">
     
-    <div class="tarjeta-img-contenedor tarjeta-img-click" onclick="abrirGaleria(['assets/img/Bote.jpg'])">
+    <div class="tarjeta-img-contenedor tarjeta-img-click" onclick="abrirCuadroDetalle('assets/img/Bote.jpg')">
         <img src="assets/img/Bote.jpg" alt="Bote">
         <div class="overlay-no-disponible">No Disponible</div>
     </div>
@@ -1210,7 +1223,7 @@ document.getElementById('tvModal').addEventListener('click', function(event) {
                 <!-- Cuadro 2 -->
                 <div class="tarjeta-cuadro" data-instock="true">
     
-    <div class="tarjeta-img-contenedor tarjeta-img-click" onclick="abrirGaleria(['assets/img/Olas.JPG'])">
+    <div class="tarjeta-img-contenedor tarjeta-img-click" onclick="abrirCuadroDetalle('assets/img/Olas.JPG')">
         <img src="assets/img/Olas.JPG" alt="Cuadro Exclusivo Olas">
         <div class="overlay-no-disponible">No Disponible</div>
     </div>
@@ -1252,7 +1265,7 @@ document.getElementById('tvModal').addEventListener('click', function(event) {
                 <!-- Cuadro 4 -->
                 <div class="tarjeta-cuadro" data-instock="true">
     
-    <div class="tarjeta-img-contenedor tarjeta-img-click" onclick="abrirGaleria(['assets/img/Manos.jpg'])">
+    <div class="tarjeta-img-contenedor tarjeta-img-click" onclick="abrirCuadroDetalle('assets/img/Manos.jpg')">
         <img src="assets/img/Manos.jpg" alt="Cuadro Exclusivo Manos">
         <div class="overlay-no-disponible">No Disponible</div>
     </div>
@@ -1273,7 +1286,7 @@ document.getElementById('tvModal').addEventListener('click', function(event) {
                 <!-- Cuadro 5 -->
                 <div class="tarjeta-cuadro" data-instock="true">
     
-    <div class="tarjeta-img-contenedor tarjeta-img-click" onclick="abrirGaleria(['assets/img/Animales.jpg'])">
+    <div class="tarjeta-img-contenedor tarjeta-img-click" onclick="abrirCuadroDetalle('assets/img/Animales.jpg')">
         <img src="assets/img/Animales.jpg" alt="Cuadro Exclusivo Animales">
         <div class="overlay-no-disponible">No Disponible</div>
     </div>
@@ -1294,7 +1307,7 @@ document.getElementById('tvModal').addEventListener('click', function(event) {
                 <!-- Cuadro 6 -->
                 <div class="tarjeta-cuadro" data-instock="true">
     
-    <div class="tarjeta-img-contenedor tarjeta-img-click" onclick="abrirGaleria(['assets/img/Cabaña.jpg'])">
+    <div class="tarjeta-img-contenedor tarjeta-img-click" onclick="abrirCuadroDetalle('assets/img/Cabaña.jpg')">
         <img src="assets/img/Cabaña.jpg" alt="Cuadro Exclusivo Cabaña">
         <div class="overlay-no-disponible">No Disponible</div>
     </div>
@@ -1315,7 +1328,7 @@ document.getElementById('tvModal').addEventListener('click', function(event) {
                 <!-- Cuadro 7 -->
                 <div class="tarjeta-cuadro" data-instock="true">
     
-    <div class="tarjeta-img-contenedor tarjeta-img-click" onclick="abrirGaleria(['assets/img/Mujer1.jpg'])">
+    <div class="tarjeta-img-contenedor tarjeta-img-click" onclick="abrirCuadroDetalle('assets/img/Mujer1.jpg')">
         <img src="assets/img/Mujer1.jpg" alt="Cuadro Exclusivo Mujer1">
         <div class="overlay-no-disponible">No Disponible</div>
     </div>
@@ -1336,7 +1349,7 @@ document.getElementById('tvModal').addEventListener('click', function(event) {
                 <!-- Cuadro 8 -->
                 <div class="tarjeta-cuadro" data-instock="true">
     
-    <div class="tarjeta-img-contenedor tarjeta-img-click" onclick="abrirGaleria(['assets/img/Mujer2.webp'])">
+    <div class="tarjeta-img-contenedor tarjeta-img-click" onclick="abrirCuadroDetalle('assets/img/Mujer2.webp')">
         <img src="assets/img/Mujer2.webp" alt="Cuadro Exclusivo Mujer2">
         <div class="overlay-no-disponible">No Disponible</div>
     </div>
@@ -1357,7 +1370,7 @@ document.getElementById('tvModal').addEventListener('click', function(event) {
                 <!-- Cuadro 9 -->
                 <div class="tarjeta-cuadro" data-instock="true">
     
-    <div class="tarjeta-img-contenedor tarjeta-img-click" onclick="abrirGaleria(['assets/img/Anciano.jpg'])">
+    <div class="tarjeta-img-contenedor tarjeta-img-click" onclick="abrirCuadroDetalle('assets/img/Anciano.jpg')">
         <img src="assets/img/Anciano.jpg" alt="Cuadro Exclusivo Anciano">
         <div class="overlay-no-disponible">No Disponible</div>
     </div>
@@ -1838,6 +1851,22 @@ document.getElementById('tvModal').addEventListener('click', function(event) {
     }
 </script>
 <script>
+    function abrirGaleriaCuadros(rutaImagen) {
+    const modal = document.getElementById('galeriaModal');
+    const contenedor = document.getElementById('contenedorFotosModal');
+    
+    // Cambiar a la clase exclusiva de cuadros
+    contenedor.className = "modal-cuadros-grid";
+    contenedor.innerHTML = '';
+    
+    const img = document.createElement('img');
+    img.src = rutaImagen;
+    img.alt = 'Cuadro en detalle';
+    contenedor.appendChild(img);
+    
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
     // Función para abrir cuadros de arte o cualquier imagen individual en grande
         function abrirCuadroDetalle(rutaImagen) {
             const modal = document.getElementById('galeriaModal');
@@ -1853,6 +1882,22 @@ document.getElementById('tvModal').addEventListener('click', function(event) {
             modal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
+        function abrirGaleriaCuadros(rutaImagen) {
+    const modal = document.getElementById('galeriaModal');
+    const contenedor = document.getElementById('contenedorFotosModal');
+    
+    // Cambiar a la clase exclusiva de cuadros
+    contenedor.className = "modal-cuadros-grid";
+    contenedor.innerHTML = '';
+    
+    const img = document.createElement('img');
+    img.src = rutaImagen;
+    img.alt = 'Cuadro en detalle';
+    contenedor.appendChild(img);
+    
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
 
         // Función para abrir la galería de múltiples fotos (casas / departamentos)
         function abrirGaleriaPropiedad(listaDeImgenes) {
