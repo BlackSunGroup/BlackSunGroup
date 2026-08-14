@@ -591,7 +591,15 @@
             font-weight: 700;
             color: var(--color-amarillo);
         }
-
+        /* Estilo específico para que los cuadros o imágenes de arte se muestren completos sin recortarse */
+#contenedorFotosModal img {
+    width: 450px !important;       /* Forzamos un ancho grande de 1200px para que se vea gigantesca */
+    max-width: none !important;
+    height: auto !important;
+    object-fit: contain !important;
+    border-radius: 8px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.7);
+}
         /* --- MENÚ DESPLEGABLE --- */
         .dropdown-container {
             position: relative;
@@ -1140,103 +1148,193 @@ document.getElementById('tvModal').addEventListener('click', function(event) {
             <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 40px;">
                 
                 <!-- Cuadro 1 -->
-                <div style="background-color: var(--bg-tarjeta); border: 1px solid var(--borde); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column;">
-                    <img src="assets/20250327_183420 (1).jpg" alt="Cuadro Ciodra 1" style="width: 100%; height: 250px; object-fit: cover; border-radius: 16px 16px 0 0;">
-                    <div style="padding: 16px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
-                        <p style="color: var(--color-mutado); font-size: 0.9rem; margin-bottom: 12px;">Obra Original - Pieza Única</p>
-                        <a href="https://wa.me/56921631905?text=Hola, estoy interesado en este cuadro Ciodra" class="btn-solido" style="font-size: 0.9rem; padding: 10px 16px; margin: 0;" target="_blank">
-                            <i class="fas fa-comments"></i> Consultar
-                        </a>
-                    </div>
-                </div>
+                <div class="tarjeta-propiedad" data-instock="true">
+    
+    <div class="tarjeta-img-contenedor tarjeta-img-click" onclick="abrirGaleria(['assets/img/Bote.jpg'])">
+        <img src="assets/img/Bote.jpg" alt="Bote">
+        <div class="overlay-no-disponible">No Disponible</div>
+    </div>
+
+    <div style="padding: 15px;">
+        <h4 style="color: #fff; font-size: 1rem; margin-bottom: 8px;">Bote</h4>
+        <p style="color: var(--color-amarillo); font-weight: 700; font-size: 0.95rem; margin-bottom: 12px;">Consultar Precio</p>
+        
+        <a href="https://wa.me/56921631905?text=Hola,%20estoy%20interesado(a)%20en%20consultar%20el%20precio%20y%20detalles%20del%20producto:%20Cuadro%20Decorativo%20Minimalista%20BlackSun.%20¿Me%20pueden%20ayudar?" 
+           target="_blank" 
+           class="btn-solido" 
+           style="padding: 10px 15px; font-size: 0.85rem;">
+            <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
+        </a>
+    </div>
+</div>
 
                 <!-- Cuadro 2 -->
-                <div style="background-color: var(--bg-tarjeta); border: 1px solid var(--borde); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column;">
-                    <img src="assets/20250511_160058 (2).jpg" alt="Cuadro Ciodra 2" style="width: 100%; height: 250px; object-fit: cover; border-radius: 16px 16px 0 0;">
-                    <div style="padding: 16px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
-                        <p style="color: var(--color-mutado); font-size: 0.9rem; margin-bottom: 12px;">Obra Original - Pieza Única</p>
-                        <a href="https://wa.me/56921631905?text=Hola, estoy interesado en este cuadro Ciodra" class="btn-solido" style="font-size: 0.9rem; padding: 10px 16px; margin: 0;" target="_blank">
-                            <i class="fas fa-comments"></i> Consultar
-                        </a>
-                    </div>
-                </div>
+                <div class="tarjeta-cuadro" data-instock="true">
+    
+    <div class="tarjeta-img-contenedor tarjeta-img-click" onclick="abrirGaleria(['assets/img/Olas.jpg'])">
+        <img src="assets/img/Olas.jpg" alt="Cuadro Exclusivo Olas">
+        <div class="overlay-no-disponible">No Disponible</div>
+    </div>
+
+    <div style="padding: 15px;">
+        <h4 style="color: #fff; font-size: 1rem; margin-bottom: 8px;">Cuadro Decorativo Minimalista Olas</h4>
+        <p style="color: var(--color-amarillo); font-weight: 700; font-size: 0.95rem; margin-bottom: 12px;">Consultar Precio</p>
+        
+        <a href="https://wa.me/56921631905?text=Hola,%20estoy%20interesado(a)%20en%20consultar%20el%20precio%20y%20detalles%20del%20producto:%20Cuadro%20Decorativo%20Minimalista%20BlackSun.%20¿Me%20pueden%20ayudar?" 
+           target="_blank" 
+           class="btn-solido" 
+           style="padding: 10px 15px; font-size: 0.85rem;">
+            <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
+        </a>
+    </div>
+</div>
 
                 <!-- Cuadro 3 -->
-                <div style="background-color: var(--bg-tarjeta); border: 1px solid var(--borde); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column;">
-                    <img src="assets/20250609_165237.jpg" alt="Cuadro Ciodra 3" style="width: 100%; height: 250px; object-fit: cover; border-radius: 16px 16px 0 0;">
-                    <div style="padding: 16px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
-                        <p style="color: var(--color-mutado); font-size: 0.9rem; margin-bottom: 12px;">Obra Original - Pieza Única</p>
-                        <a href="https://wa.me/56921631905?text=Hola, estoy interesado en este cuadro Ciodra" class="btn-solido" style="font-size: 0.9rem; padding: 10px 16px; margin: 0;" target="_blank">
-                            <i class="fas fa-comments"></i> Consultar
-                        </a>
-                    </div>
-                </div>
+                <div class="tarjeta-cuadro" data-instock="true">
+    
+    <div class="tarjeta-img-contenedor tarjeta-img-click" onclick="abrirGaleria(['assets/img/Puente.jpg'])">
+        <img src="assets/img/Puente.jpg" alt="Cuadro Exclusivo Puente">
+        <div class="overlay-no-disponible">No Disponible</div>
+    </div>
+
+    <div style="padding: 15px;">
+        <h4 style="color: #fff; font-size: 1rem; margin-bottom: 8px;">Cuadro Decorativo Puente</h4>
+        <p style="color: var(--color-amarillo); font-weight: 700; font-size: 0.95rem; margin-bottom: 12px;">Consultar Precio</p>
+        
+        <a href="https://wa.me/56921631905?text=Hola,%20estoy%20interesado(a)%20en%20consultar%20el%20precio%20y%20detalles%20del%20producto:%20Cuadro%20Decorativo%20Minimalista%20BlackSun.%20¿Me%20pueden%20ayudar?" 
+           target="_blank" 
+           class="btn-solido" 
+           style="padding: 10px 15px; font-size: 0.85rem;">
+            <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
+        </a>
+    </div>
+</div>
 
                 <!-- Cuadro 4 -->
-                <div style="background-color: var(--bg-tarjeta); border: 1px solid var(--borde); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column;">
-                    <img src="assets/20250609_165737.jpg" alt="Cuadro Ciodra 4" style="width: 100%; height: 250px; object-fit: cover; border-radius: 16px 16px 0 0;">
-                    <div style="padding: 16px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
-                        <p style="color: var(--color-mutado); font-size: 0.9rem; margin-bottom: 12px;">Obra Original - Pieza Única</p>
-                        <a href="https://wa.me/56921631905?text=Hola, estoy interesado en este cuadro Ciodra" class="btn-solido" style="font-size: 0.9rem; padding: 10px 16px; margin: 0;" target="_blank">
-                            <i class="fas fa-comments"></i> Consultar
-                        </a>
-                    </div>
-                </div>
+                <div class="tarjeta-cuadro" data-instock="true">
+    
+    <div class="tarjeta-img-contenedor tarjeta-img-click" onclick="abrirGaleria(['assets/img/Manos.jpg'])">
+        <img src="assets/img/Manos.jpg" alt="Cuadro Exclusivo Manos">
+        <div class="overlay-no-disponible">No Disponible</div>
+    </div>
+
+    <div style="padding: 15px;">
+        <h4 style="color: #fff; font-size: 1rem; margin-bottom: 8px;">Cuadro Decorativo Manos</h4>
+        <p style="color: var(--color-amarillo); font-weight: 700; font-size: 0.95rem; margin-bottom: 12px;">Consultar Precio</p>
+        
+        <a href="https://wa.me/56921631905?text=Hola,%20estoy%20interesado(a)%20en%20consultar%20el%20precio%20y%20detalles%20del%20producto:%20Cuadro%20Decorativo%20Minimalista%20BlackSun.%20¿Me%20pueden%20ayudar?" 
+           target="_blank" 
+           class="btn-solido" 
+           style="padding: 10px 15px; font-size: 0.85rem;">
+            <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
+        </a>
+    </div>
+</div>
 
                 <!-- Cuadro 5 -->
-                <div style="background-color: var(--bg-tarjeta); border: 1px solid var(--borde); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column;">
-                    <img src="assets/IMG_20250726_013353_222.webp" alt="Cuadro Ciodra 5" style="width: 100%; height: 250px; object-fit: cover; border-radius: 16px 16px 0 0;">
-                    <div style="padding: 16px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
-                        <p style="color: var(--color-mutado); font-size: 0.9rem; margin-bottom: 12px;">Obra Original - Pieza Única</p>
-                        <a href="https://wa.me/56921631905?text=Hola, estoy interesado en este cuadro Ciodra" class="btn-solido" style="font-size: 0.9rem; padding: 10px 16px; margin: 0;" target="_blank">
-                            <i class="fas fa-comments"></i> Consultar
-                        </a>
-                    </div>
-                </div>
+                <div class="tarjeta-cuadro" data-instock="true">
+    
+    <div class="tarjeta-img-contenedor tarjeta-img-click" onclick="abrirGaleria(['assets/img/Animales.jpg'])">
+        <img src="assets/img/Animales.jpg" alt="Cuadro Exclusivo Animales">
+        <div class="overlay-no-disponible">No Disponible</div>
+    </div>
+
+    <div style="padding: 15px;">
+        <h4 style="color: #fff; font-size: 1rem; margin-bottom: 8px;">Cuadro Decorativo Animales</h4>
+        <p style="color: var(--color-amarillo); font-weight: 700; font-size: 0.95rem; margin-bottom: 12px;">Consultar Precio</p>
+        
+        <a href="https://wa.me/56921631905?text=Hola,%20estoy%20interesado(a)%20en%20consultar%20el%20precio%20y%20detalles%20del%20producto:%20Cuadro%20Decorativo%20Minimalista%20BlackSun.%20¿Me%20pueden%20ayudar?" 
+           target="_blank" 
+           class="btn-solido" 
+           style="padding: 10px 15px; font-size: 0.85rem;">
+            <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
+        </a>
+    </div>
+</div>
 
                 <!-- Cuadro 6 -->
-                <div style="background-color: var(--bg-tarjeta); border: 1px solid var(--borde); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column;">
-                    <img src="assets/IMG-20240815-WA0025.jpg" alt="Cuadro Ciodra 6" style="width: 100%; height: 250px; object-fit: cover; border-radius: 16px 16px 0 0;">
-                    <div style="padding: 16px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
-                        <p style="color: var(--color-mutado); font-size: 0.9rem; margin-bottom: 12px;">Obra Original - Pieza Única</p>
-                        <a href="https://wa.me/56921631905?text=Hola, estoy interesado en este cuadro Ciodra" class="btn-solido" style="font-size: 0.9rem; padding: 10px 16px; margin: 0;" target="_blank">
-                            <i class="fas fa-comments"></i> Consultar
-                        </a>
-                    </div>
-                </div>
+                <div class="tarjeta-cuadro" data-instock="true">
+    
+    <div class="tarjeta-img-contenedor tarjeta-img-click" onclick="abrirGaleria(['assets/img/Cabaña.jpg'])">
+        <img src="assets/img/Cabaña.jpg" alt="Cuadro Exclusivo Cabaña">
+        <div class="overlay-no-disponible">No Disponible</div>
+    </div>
+
+    <div style="padding: 15px;">
+        <h4 style="color: #fff; font-size: 1rem; margin-bottom: 8px;">Cuadro Decorativo Cabaña</h4>
+        <p style="color: var(--color-amarillo); font-weight: 700; font-size: 0.95rem; margin-bottom: 12px;">Consultar Precio</p>
+        
+        <a href="https://wa.me/56921631905?text=Hola,%20estoy%20interesado(a)%20en%20consultar%20el%20precio%20y%20detalles%20del%20producto:%20Cuadro%20Decorativo%20Minimalista%20BlackSun.%20¿Me%20pueden%20ayudar?" 
+           target="_blank" 
+           class="btn-solido" 
+           style="padding: 10px 15px; font-size: 0.85rem;">
+            <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
+        </a>
+    </div>
+</div>
 
                 <!-- Cuadro 7 -->
-                <div style="background-color: var(--bg-tarjeta); border: 1px solid var(--borde); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column;">
-                    <img src="assets/IMG-20240815-WA0026.jpg" alt="Cuadro Ciodra 7" style="width: 100%; height: 250px; object-fit: cover; border-radius: 16px 16px 0 0;">
-                    <div style="padding: 16px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
-                        <p style="color: var(--color-mutado); font-size: 0.9rem; margin-bottom: 12px;">Obra Original - Pieza Única</p>
-                        <a href="https://wa.me/56921631905?text=Hola, estoy interesado en este cuadro Ciodra" class="btn-solido" style="font-size: 0.9rem; padding: 10px 16px; margin: 0;" target="_blank">
-                            <i class="fas fa-comments"></i> Consultar
-                        </a>
-                    </div>
-                </div>
+                <div class="tarjeta-cuadro" data-instock="true">
+    
+    <div class="tarjeta-img-contenedor tarjeta-img-click" onclick="abrirGaleria(['assets/img/Mujer1.jpg'])">
+        <img src="assets/img/Mujer1.jpg" alt="Cuadro Exclusivo Mujer1">
+        <div class="overlay-no-disponible">No Disponible</div>
+    </div>
+
+    <div style="padding: 15px;">
+        <h4 style="color: #fff; font-size: 1rem; margin-bottom: 8px;">Cuadro Decorativo Mujer ojos verdes</h4>
+        <p style="color: var(--color-amarillo); font-weight: 700; font-size: 0.95rem; margin-bottom: 12px;">Consultar Precio</p>
+        
+        <a href="https://wa.me/56921631905?text=Hola,%20estoy%20interesado(a)%20en%20consultar%20el%20precio%20y%20detalles%20del%20producto:%20Cuadro%20Decorativo%20Minimalista%20BlackSun.%20¿Me%20pueden%20ayudar?" 
+           target="_blank" 
+           class="btn-solido" 
+           style="padding: 10px 15px; font-size: 0.85rem;">
+            <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
+        </a>
+    </div>
+</div>
 
                 <!-- Cuadro 8 -->
-                <div style="background-color: var(--bg-tarjeta); border: 1px solid var(--borde); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column;">
-                    <img src="assets/IMG-20240815-WA0027.jpg" alt="Cuadro Ciodra 8" style="width: 100%; height: 250px; object-fit: cover; border-radius: 16px 16px 0 0;">
-                    <div style="padding: 16px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
-                        <p style="color: var(--color-mutado); font-size: 0.9rem; margin-bottom: 12px;">Obra Original - Pieza Única</p>
-                        <a href="https://wa.me/56921631905?text=Hola, estoy interesado en este cuadro Ciodra" class="btn-solido" style="font-size: 0.9rem; padding: 10px 16px; margin: 0;" target="_blank">
-                            <i class="fas fa-comments"></i> Consultar
-                        </a>
-                    </div>
-                </div>
+                <div class="tarjeta-cuadro" data-instock="true">
+    
+    <div class="tarjeta-img-contenedor tarjeta-img-click" onclick="abrirGaleria(['assets/img/Mujer2.webp'])">
+        <img src="assets/img/Mujer2.webp" alt="Cuadro Exclusivo Mujer2">
+        <div class="overlay-no-disponible">No Disponible</div>
+    </div>
+
+    <div style="padding: 15px;">
+        <h4 style="color: #fff; font-size: 1rem; margin-bottom: 8px;">Cuadro Decorativo Mujer de Madera</h4>
+        <p style="color: var(--color-amarillo); font-weight: 700; font-size: 0.95rem; margin-bottom: 12px;">Consultar Precio</p>
+        
+        <a href="https://wa.me/56921631905?text=Hola,%20estoy%20interesado(a)%20en%20consultar%20el%20precio%20y%20detalles%20del%20producto:%20Cuadro%20Decorativo%20Minimalista%20BlackSun.%20¿Me%20pueden%20ayudar?" 
+           target="_blank" 
+           class="btn-solido" 
+           style="padding: 10px 15px; font-size: 0.85rem;">
+            <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
+        </a>
+    </div>
+</div>
 
                 <!-- Cuadro 9 -->
-                <div style="background-color: var(--bg-tarjeta); border: 1px solid var(--borde); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column;">
-                    <img src="assets/IMG-20240815-WA0028.jpg" alt="Cuadro Ciodra 9" style="width: 100%; height: 250px; object-fit: cover; border-radius: 16px 16px 0 0;">
-                    <div style="padding: 16px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
-                        <p style="color: var(--color-mutado); font-size: 0.9rem; margin-bottom: 12px;">Obra Original - Pieza Única</p>
-                        <a href="https://wa.me/56921631905?text=Hola, estoy interesado en este cuadro Ciodra" class="btn-solido" style="font-size: 0.9rem; padding: 10px 16px; margin: 0;" target="_blank">
-                            <i class="fas fa-comments"></i> Consultar
-                        </a>
-                    </div>
-                </div>
+                <div class="tarjeta-cuadro" data-instock="true">
+    
+    <div class="tarjeta-img-contenedor tarjeta-img-click" onclick="abrirGaleria(['assets/img/Anciano.jpg'])">
+        <img src="assets/img/Anciano.jpg" alt="Cuadro Exclusivo Anciano">
+        <div class="overlay-no-disponible">No Disponible</div>
+    </div>
+
+    <div style="padding: 15px;">
+        <h4 style="color: #fff; font-size: 1rem; margin-bottom: 8px;">Cuadro Decorativo Anciano</h4>
+        <p style="color: var(--color-amarillo); font-weight: 700; font-size: 0.95rem; margin-bottom: 12px;">Consultar Precio</p>
+        
+        <a href="https://wa.me/56921631905?text=Hola,%20estoy%20interesado(a)%20en%20consultar%20el%20precio%20y%20detalles%20del%20producto:%20Cuadro%20Decorativo%20Minimalista%20BlackSun.%20¿Me%20pueden%20ayudar?" 
+           target="_blank" 
+           class="btn-solido" 
+           style="padding: 10px 15px; font-size: 0.85rem;">
+            <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
+        </a>
+    </div>
+</div>
 
             </div>
         </section>
