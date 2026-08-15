@@ -616,40 +616,7 @@
     transform: scale(1.03);
 }
 
-/* --- ESTILO UNIFICADO PARA VER CUALQUIER IMAGEN EN GRANDE (Cuadros, Casas, Departamentos y Detalles) --- */
-.modal-cuadro-detalle {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-height: 80vh;
-    width: 100%;
-    overflow: auto;
-    padding: 10px;
-}
 
-.modal-cuadro-detalle img {
-    max-width: 100% !important;
-    width: auto !important;
-    max-height: 75vh !important;
-    height: auto !important;
-    object-fit: contain !important;
-    border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
-    display: block;
-    margin: 0 auto;
-}
-/* --- 2. ESTILO EXCLUSIVO PARA CUADROS DE ARTE (Zoom controlado) --- */
-/* Si usas un contenedor o clase independiente para los cuadros, por ejemplo .modal-cuadros-grid img */
-.modal-cuadros-grid img {
-    max-width: 450px !important;
-    width: 100% !important;
-    height: auto !important;
-    object-fit: contain !important;
-    border-radius: 8px;
-    box-shadow: 0 5px 25px rgba(0,0,0,0.7);
-    margin: 0 auto;
-    display: block;
-}
 
         /* --- MENÚ DESPLEGABLE --- */
         .dropdown-container {
@@ -1867,75 +1834,35 @@ document.getElementById('tvModal').addEventListener('click', function(event) {
     modal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
 }
-    // Función para abrir cuadros de arte o cualquier imagen individual en grande
-        function abrirCuadroDetalle(rutaImagen) {
-            const modal = document.getElementById('galeriaModal');
-            const contenedor = document.getElementById('contenedorFotosModal');
-            contenedor.className = "modal-cuadro-detalle";
-            contenedor.innerHTML = '';
-            
+    // Función para fotos de casas/departamentos
+    function abrirGaleria(listaDeImagenes) {
+        const modal = document.getElementById('galeriaModal');
+        const contenedor = document.getElementById('contenedorFotosModal');
+        contenedor.className = "modal-galeria-grid";
+        contenedor.innerHTML = '';
+        
+        listaDeImagenes.forEach(ruta => {
             const img = document.createElement('img');
-            img.src = rutaImagen;
-            img.alt = 'Detalle de la Imagen';
+            img.src = ruta;
             contenedor.appendChild(img);
-            
-            modal.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-        function abrirGaleriaCuadros(rutaImagen) {
-    const modal = document.getElementById('galeriaModal');
-    const contenedor = document.getElementById('contenedorFotosModal');
-    
-    // Cambiar a la clase exclusiva de cuadros
-    contenedor.className = "modal-cuadros-grid";
-    contenedor.innerHTML = '';
-    
-    const img = document.createElement('img');
-    img.src = rutaImagen;
-    img.alt = 'Cuadro en detalle';
-    contenedor.appendChild(img);
-    
-    modal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-}
+        });
+        modal.style.display = 'flex';
+    }
 
-        // Función para abrir la galería de múltiples fotos (casas / departamentos)
-        function abrirGaleriaPropiedad(listaDeImgenes) {
-            const modal = document.getElementById('galeriaModal');
-            const contenedor = document.getElementById('contenedorFotosModal');
-            contenedor.className = "modal-galeria-grid";
-            contenedor.innerHTML = '';
-            
-            listaDeImgenes.forEach(ruta => {
-                const img = document.createElement('img');
-                img.src = ruta;
-                img.alt = 'Foto adicional de la propiedad';
-                // Si hacen clic en una foto de la grilla de la casa, también se puede ver en grande con la función de detalle:
-                img.onclick = () => abrirCuadroDetalle(ruta);
-                contenedor.appendChild(img);
-            });
-            
-            modal.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function cerrarGaleria() {
-            const modal = document.getElementById('galeriaModal');
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        function cerrarGaleriaFuera(event) {
-            const modal = document.getElementById('galeriaModal');
-            if (event.target === modal) {
-                cerrarGaleria();
-            }
-        }
+    // Función para cuadros de arte individuales
+    function abrirCuadroDetalle(rutaImagen) {
+        const modal = document.getElementById('galeriaModal');
+        const contenedor = document.getElementById('contenedorFotosModal');
+        contenedor.className = "modal-cuadro-detalle";
+        contenedor.innerHTML = `<img src="${rutaImagen}" alt="Cuadro">`;
+        modal.style.display = 'flex';
+    }
+    
+    function cerrarGaleria() {
+        document.getElementById('galeriaModal').style.display = 'none';
+    }
+</script>
     </script>
     
-</body>
-</html>
-
-
 </body>
 </html>
