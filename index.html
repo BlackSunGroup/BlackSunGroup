@@ -591,29 +591,40 @@
             font-weight: 700;
             color: var(--color-amarillo);
         }
-        /* --- ESTILO PARA LA GALERÍA MÚLTIPLE (Cuadrícula de fotos adicionales de casas/departamentos) --- */
+        /* Estilo para la cuadrícula de fotos múltiples (cuando hay varias fotos) */
 .modal-galeria-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 12px;
-    max-height: 65vh;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    max-height: 70vh;
     overflow-y: auto;
     padding: 10px;
-    justify-items: center;
 }
 
 .modal-galeria-grid img {
     width: 100%;
-    height: 160px;
+    height: 120px;
     object-fit: cover;
-    border-radius: 10px;
-    border: 1px solid var(--borde);
+    border-radius: 8px;
     cursor: pointer;
-    transition: transform 0.2s;
 }
 
-.modal-galeria-grid img:hover {
-    transform: scale(1.03);
+/* Estilo para la imagen individual en grande (que se vea completa) */
+.modal-cuadro-detalle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}
+
+.modal-cuadro-detalle img {
+    max-width: 90%;
+    max-height: 80vh;
+    object-fit: contain; /* Esto evita que se corte o distorsione */
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
 
