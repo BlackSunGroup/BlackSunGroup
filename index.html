@@ -591,25 +591,7 @@
             font-weight: 700;
             color: var(--color-amarillo);
         }
-        /* Estilo para la cuadrícula de fotos múltiples (cuando hay varias fotos) */
-.modal-galeria-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 10px;
-    max-height: 70vh;
-    overflow-y: auto;
-    padding: 10px;
-}
-
-.modal-galeria-grid img {
-    width: 100%;
-    height: 120px;
-    object-fit: cover;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-/* Estilo para la imagen individual en grande (que se vea completa) */
+        /* Clase que aplicaremos al abrir un cuadro en grande */
 .modal-cuadro-detalle {
     display: flex;
     justify-content: center;
@@ -620,14 +602,12 @@
 }
 
 .modal-cuadro-detalle img {
-    max-width: 90%;
-    max-height: 80vh;
-    object-fit: contain; /* Esto evita que se corte o distorsione */
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    max-width: 100% !important;
+    max-height: 80vh !important; /* Limita la altura para que no desborde */
+    object-fit: contain !important; /* ESTO ES LO QUE EVITA EL RECORTE */
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
-
-
 
         /* --- MENÚ DESPLEGABLE --- */
         .dropdown-container {
@@ -1007,7 +987,7 @@ document.getElementById('tvModal').addEventListener('click', function(event) {
 
         <section class="stats-grid" id="servicios">
             <div class="stat-card">
-                <h3>+27K +3K +3K</h3>
+                <h3>+28K +3K +3K</h3>
                 <p>Películas · Series · Canales</p>
             </div>
             <div class="stat-card">
@@ -1046,7 +1026,7 @@ document.getElementById('tvModal').addEventListener('click', function(event) {
             <div class="feature-row">
                 <div class="feature-play-btn"><i class="fas fa-play"></i></div>
                 <div class="feature-details">
-                    <h4>+27K Películas y +3K Series</h4>
+                    <h4>+28K Películas y +3K Series</h4>
                     <p>Catálogo actualizado con los últimos estrenos</p>
                 </div>
             </div>
@@ -1201,8 +1181,8 @@ document.getElementById('tvModal').addEventListener('click', function(event) {
                 <!-- Cuadro 2 -->
                 <div class="tarjeta-cuadro" data-instock="true">
     
-    <div class="tarjeta-img-contenedor tarjeta-img-click" onclick="abrirCuadroDetalle('assets/img/Olas.JPG')">
-        <img src="assets/img/Olas.JPG" alt="Cuadro Exclusivo Olas">
+    <div class="tarjeta-img-contenedor tarjeta-img-click" onclick="abrirCuadroDetalle('assets/img/olas.JPG')">
+        <img src="assets/img/olas.JPG" alt="Cuadro Exclusivo Olas">
         <div class="overlay-no-disponible">No Disponible</div>
     </div>
 
@@ -1872,6 +1852,22 @@ document.getElementById('tvModal').addEventListener('click', function(event) {
     function cerrarGaleria() {
         document.getElementById('galeriaModal').style.display = 'none';
     }
+    function abrirDetalleCuadro(rutaImagen) {
+    const modal = document.getElementById('galeriaModal'); // ID de tu ventana modal
+    const contenedor = document.getElementById('contenedorFotosModal'); // ID del contenedor interno
+    
+    // 1. Limpiamos y preparamos el contenedor
+    contenedor.innerHTML = '';
+    contenedor.className = 'modal-cuadro-detalle'; // <--- ESTO APLICA EL CSS CORRECTO
+    
+    // 2. Creamos la imagen
+    const img = document.createElement('img');
+    img.src = rutaImagen;
+    
+    // 3. Insertamos
+    contenedor.appendChild(img);
+    modal.style.display = 'flex'; // Mostramos el modal
+}
 </script>
     </script>
     
