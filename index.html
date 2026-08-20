@@ -870,12 +870,83 @@ max-width: 100% !important;
     font-size: 1.8rem;
     cursor: pointer;
 }
+/* Estilo del modal para navegación */
+#galeriaModal {
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.95); z-index: 9999;
+    align-items: center; justify-content: center;
+}
+
+#imagenAmpliada {
+    max-width: 90%; max-height: 80vh; 
+    object-fit: contain; cursor: zoom-in;
+    transition: transform 0.3s ease;
+}
+
+/* Botones de navegación */
+.nav-btn {
+    position: absolute; top: 50%; color: white; font-size: 3rem;
+    cursor: pointer; padding: 20px; user-select: none;
+}
+.prev { left: 20px; }
+.next { right: 20px; }
+.close-btn { position: absolute; top: 20px; right: 30px; color: white; font-size: 2rem; cursor: pointer; }
 
 
 /* Cursor interactivo en la imagen principal para indicar que se puede abrir */
 .tarjeta-img-click {
     cursor: pointer;
 }
+/* --- ESTILO PARA EL VISOR EN PANTALLA COMPLETA --- */
+#visorPantallaCompleta {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.95); /* Fondo oscuro semitransparente */
+    z-index: 100000; /* Asegura que se vea por encima de cualquier otro elemento */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#visorPantallaCompleta img {
+    max-width: 95vw;
+    max-height: 80vh;
+    object-fit: contain; /* Evita recortes en la imagen ampliada */
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+}
+
+.cerrar-visor {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    color: white;
+    font-size: 50px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-volver-galeria {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #f1c40f; /* Color amarillo corporativo */
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-volver-galeria:hover {
+    background-color: #d4ac0d;
+}
+
         
 
     </style> </head>
@@ -1471,12 +1542,12 @@ document.getElementById('tvModal').addEventListener('click', function(event) {
     <div class="tarjeta-propiedad" data-instock="false">
     
     <div class="tarjeta-img-contenedor tarjeta-img-click" onclick="abrirGaleria(['assets/img/LaSerena1_1.jpg', 'assets/img/LaSerena1_2.jpg', 'assets/img/LaSerena1_3.jpg'])">
-        <img src="assets/img/LaSerena1.jpg" alt="Departamento 2D/2B, El Beillador 1810, La Serena">
+        <img src="assets/img/LaSerena1.jpg" alt="Departamento 2D/2B, El Brillador 1810, La Serena">
         <div class="overlay-no-disponible">No Disponible</div>
     </div>
 
     <div style="padding: 15px;">
-        <h4 style="color: #fff; font-size: 1rem; margin-bottom: 8px;">Departamento 2D/2B, El Beillador 1810, La Serena</h4>
+        <h4 style="color: #fff; font-size: 1rem; margin-bottom: 8px;">Departamento 2D/2B, El Brillador 1810, La Serena</h4>
         <p style="color: var(--color-amarillo); font-weight: 700; font-size: 0.95rem; margin-bottom: 12px;">Consultar Precio</p>
         
         <a href="https://wa.me/56921631905?text=Hola,%20estoy%20interesado(a)%20en%20consultar%20sobre%20la%20propiedad:%20Casa%20Residencial%203D/2B%20Faldeos%20de%20Florida,%20La%20Serena.%20¿Me%20pueden%20dar%20más%20detalles?" 
@@ -1564,6 +1635,28 @@ document.getElementById('tvModal').addEventListener('click', function(event) {
 
     <div style="padding: 15px;">
         <h4 style="color: #fff; font-size: 1rem; margin-bottom: 8px;">Departamento 1D/1B Alto L a Serena IV, La Serena</h4>
+        <p style="color: var(--color-amarillo); font-weight: 700; font-size: 0.95rem; margin-bottom: 12px;">Consultar Precio</p>
+        
+        <a href="https://wa.me/56921631905?text=Hola,%20estoy%20interesado(a)%20en%20consultar%20sobre%20la%20propiedad:%20Casa%20Residencial%203D/2B%20Faldeos%20de%20Florida,%20La%20Serena.%20¿Me%20pueden%20dar%20más%20detalles?" 
+           target="_blank" 
+           class="btn-solido" 
+           style="padding: 10px 15px; font-size: 0.85rem;">
+            <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
+        </a>
+    </div>
+</div>
+
+<!-- Tarjeta de Propiedad 6 -->
+
+    <div class="tarjeta-propiedad" data-instock="true">
+    
+    <div class="tarjeta-img-contenedor tarjeta-img-click" onclick="abrirGaleria(['assets/img/elbrillador_1.jpg', 'assets/img/elbrillador_2.jpg', 'assets/img/elbrillador_3.jpg','assets/img/elbrillador_4.jpg', 'assets/img/elbrillador_5.jpg', 'assets/img/elbrillador_6.jpg', 'assets/img/elbrillador_7.jpg', 'assets/img/elbrillador_8.jpg', 'assets/img/elbrillador_9.jpg', 'assets/img/elbrillador_10.jpg', 'assets/img/elbrillador_11.jpg'])">
+        <img src="assets/img/elbrillador.jpg" alt="Departamento 3D/1B, El Brillador 1810, La Serena">
+        <div class="overlay-no-disponible">No Disponible</div>
+    </div>
+
+    <div style="padding: 15px;">
+        <h4 style="color: #fff; font-size: 1rem; margin-bottom: 8px;">Departamento 3D/1B, El Brillador 1810, La Serena</h4>
         <p style="color: var(--color-amarillo); font-weight: 700; font-size: 0.95rem; margin-bottom: 12px;">Consultar Precio</p>
         
         <a href="https://wa.me/56921631905?text=Hola,%20estoy%20interesado(a)%20en%20consultar%20sobre%20la%20propiedad:%20Casa%20Residencial%203D/2B%20Faldeos%20de%20Florida,%20La%20Serena.%20¿Me%20pueden%20dar%20más%20detalles?" 
@@ -1872,6 +1965,8 @@ document.getElementById('tvModal').addEventListener('click', function(event) {
     contenedor.appendChild(img);
     modal.style.display = 'flex'; // Mostramos el modal
 }
+
+
 </script>
     </script>
     
