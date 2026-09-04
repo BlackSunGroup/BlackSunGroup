@@ -1884,7 +1884,21 @@ document.getElementById('tvModal').addEventListener('click', function(event) {
         </footer>
     </div>
     <div id="galeriaModal" class="modal-galeria" onclick="cerrarGaleriaFuera(event)">
-    <div class="modal-galeria-contenido">
+    <!-- VISOR DE IMAGEN EN PANTALLA COMPLETA -->
+<div id="visorPantallaCompleta" onclick="cerrarVisorFuera(event)">
+    <!-- Botón X para volver al grupo de imágenes -->
+    <span class="cerrar-visor" onclick="cerrarVisorGrande()">&times;</span>
+    
+    <!-- Botones de navegación para ver la siguiente / anterior -->
+    <div class="nav-btn prev" onclick="cambiarVisorGrande(-1); event.stopPropagation();">&#10094;</div>
+    <div class="nav-btn next" onclick="cambiarVisorGrande(1); event.stopPropagation();">&#10095;</div>
+
+    <!-- Contenedor de la Imagen Grande -->
+    <div id="contenedorVisorImagen">
+        <img id="imagenVisorGrande" src="" alt="Imagen ampliada de la propiedad">
+    </div>
+</div>
+        <div class="modal-galeria-contenido">
         <button class="cerrar-modal-galeria" onclick="cerrarGaleria()"><i class="fas fa-times"></i></button>
         <h3 style="color: var(--color-amarillo); margin-bottom: 15px; font-size: 1.2rem;">Galería de la Propiedad</h3>
         <div class="modal-galeria-grid" id="contenedorFotosModal">
@@ -1931,64 +1945,106 @@ document.getElementById('tvModal').addEventListener('click', function(event) {
     }
 </script>
 <script>
-    function abrirGaleriaCuadros(rutaImagen) {
+// Variables globales para la galería actual
+let fotosPropiedadActual = [];
+let indiceFotoActual = 0;
+
+// 1. Abrir Galería
+function abrirGaleria(listaDeImagenes) {
+    fotosPropiedadActual = listaDeImagenes;
     const modal = document.getElementById('galeriaModal');
     const contenedor = document.getElementById('contenedorFotosModal');
     
-    // Cambiar a la clase exclusiva de cuadros
-    contenedor.className = "modal-cuadros-grid";
+    if (!modal || !contenedor) return;
+
+    contenedor.className = "modal-galeria-grid";
     contenedor.innerHTML = '';
     
-    const img = document.createElement('img');
-    img.src = rutaImagen;
-    img.alt = 'Cuadro en detalle';
-    contenedor.appendChild(img);
+    listaDeImagenes.forEach((ruta, index) => {
+        const img = document.createElement('img');
+        img.src = ruta;
+        img.alt = 'Foto de la propiedad';
+        img.style.cursor = 'pointer';
+        img.onclick = function() {
+            abrirVisorGrande(index);
+        };
+        contenedor.appendChild(img);
+    });
     
     modal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
 }
-    // Función para fotos de casas/departamentos
-    function abrirGaleria(listaDeImagenes) {
-        const modal = document.getElementById('galeriaModal');
-        const contenedor = document.getElementById('contenedorFotosModal');
-        contenedor.className = "modal-galeria-grid";
-        contenedor.innerHTML = '';
-        
-        listaDeImagenes.forEach(ruta => {
-            const img = document.createElement('img');
-            img.src = ruta;
-            contenedor.appendChild(img);
-        });
-        modal.style.display = 'flex';
-    }
 
-    // Función para cuadros de arte individuales
-    function abrirCuadroDetalle(rutaImagen) {
-        const modal = document.getElementById('galeriaModal');
-        const contenedor = document.getElementById('contenedorFotosModal');
-        contenedor.className = "modal-cuadro-detalle";
-        contenedor.innerHTML = `<img src="${rutaImagen}" alt="Cuadro">`;
-        modal.style.display = 'flex';
+// 2. Cerrar la Galería y restaurar el scroll
+function cerrarGaleria() {
+    const modal = document.getElementById('galeriaModal');
+    const visor = document.getElementById('visorPantallaCompleta');
+    
+    if (visor) visor.style.display = 'none';
+    if (modal) modal.style.display = 'none';
+    
+    // Restablece el scroll en body e html
+    document.body.style.overflow = '';
+    document.documentElement.style.overflow = '';
+}
+
+// 3. Cerrar la galería al hacer clic fuera del contenido
+function cerrarGaleriaFuera(event) {
+    const modal = document.getElementById('galeriaModal');
+    if (event.target === modal) {
+        cerrarGaleria();
     }
+}
+
+// 4. Abrir la Imagen en Pantalla Completa (Visor Grande)
+function abrirVisorGrande(index) {
+    indiceFotoActual = index;
+    mostrarImagenVisor();
     
-    function cerrarGaleria() {
-        document.getElementById('galeriaModal').style.display = 'none';
+    const visor = document.getElementById('visorPantallaCompleta');
+    if (visor) visor.style.display = 'flex';
+}
+
+// 5. Cargar la imagen actual en el visor
+function mostrarImagenVisor() {
+    const imgVisor = document.getElementById('imagenVisorGrande');
+    if (imgVisor && fotosPropiedadActual[indiceFotoActual]) {
+        imgVisor.src = fotosPropiedadActual[indiceFotoActual];
     }
-    function abrirDetalleCuadro(rutaImagen) {
-    const modal = document.getElementById('galeriaModal'); // ID de tu ventana modal
-    const contenedor = document.getElementById('contenedorFotosModal'); // ID del contenedor interno
+}
+
+// 6. Cerrar únicamente el visor grande (primera cruz)
+function cerrarVisorGrande() {
+    const visor = document.getElementById('visorPantallaCompleta');
+    if (visor) visor.style.display = 'none';
+}
+
+// 7. Cerrar el visor si se hace clic fuera de la imagen
+function cerrarVisorFuera(event) {
+    const visor = document.getElementById('visorPantallaCompleta');
+    if (event.target === visor) {
+        cerrarVisorGrande();
+    }
+}
+
+// 8. Navegar entre imágenes (Anterior / Siguiente)
+function cambiarVisorGrande(direccion) {
+    if (fotosPropiedadActual.length === 0) return;
+    indiceFotoActual += direccion;
     
-    // 1. Limpiamos y preparamos el contenedor
-    contenedor.innerHTML = '';
-    contenedor.className = 'modal-cuadro-detalle'; // <--- ESTO APLICA EL CSS CORRECTO
-    
-    // 2. Creamos la imagen
-    const img = document.createElement('img');
-    img.src = rutaImagen;
-    
-    // 3. Insertamos
-    contenedor.appendChild(img);
-    modal.style.display = 'flex'; // Mostramos el modal
+    if (indiceFotoActual < 0) {
+        indiceFotoActual = fotosPropiedadActual.length - 1;
+    } else if (indiceFotoActual >= fotosPropiedadActual.length) {
+        indiceFotoActual = 0;
+    }
+    mostrarImagenVisor();
+}
+
+// 9. Abrir cuadros de arte en detalle
+function abrirCuadroDetalle(rutaImagen) {
+    abrirGaleria([rutaImagen]);
+    abrirVisorGrande(0);
 }
 
 
